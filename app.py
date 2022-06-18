@@ -16,7 +16,7 @@ def index():
         logging.info(housing.error_message)
         logging.info("We are testing logging module")
 
-    return "Starting Machine Learning Project...Yess CICD pipeline is working."
+    return "Starting Machine Learning Project..CICD pipeline is working. After Adding logger and Exception. "
 
 
 if __name__=="__main__":
