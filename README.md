@@ -63,14 +63,6 @@ To check remote url
 git remote -v
 ```
 
-To setup CI/CD pipeline in heroku we need 3 information
-1. HEROKU_EMAIL = anishyadav7045075175@gmail.com
-2. HEROKU_API_KEY = <>
-3. HEROKU_APP_NAME = ml-regression-app
-======
-
-### ⬆ IMPORTANT PART ⬆ ### 
-
 ```
 
 To setup CI/CD pipeline in heroku we need 3 information
@@ -82,36 +74,25 @@ To setup CI/CD pipeline in heroku we need 3 information
 >>>>>>> ba1fdb3221a67dd5595db0f7decfac52cfaca5f2
 
 BUILD DOCKER IMAGE
-```
+
 docker build -t <image_name>:<tagname> .
 <<<<<<< HEAD
-```
 > Note: Image name for docker must be lowercase
 
 
 To list docker image
-```
 docker images
-```
 
 Run docker image
-```
 docker run -p 5000:5000 -e PORT=5000 f8c749e73678
-```
 
 To check running container in docker
-```
 docker ps
-```
 
 Tos stop docker conatiner
-```
 docker stop <container_id>
-```
 
 
-
-```
+To install setup.py or use directly pip install -r requirements.txt but make sure to add -e . int that.
 python setup.py install
-```pip
 ======
