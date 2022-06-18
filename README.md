@@ -67,10 +67,24 @@ To setup CI/CD pipeline in heroku we need 3 information
 1. HEROKU_EMAIL = anishyadav7045075175@gmail.com
 2. HEROKU_API_KEY = <>
 3. HEROKU_APP_NAME = ml-regression-app
+======
+
+### ⬆ IMPORTANT PART ⬆ ### 
+
+```
+
+To setup CI/CD pipeline in heroku we need 3 information
+
+1. HEROKU_EMAIL = kumarsunny30066@gmail.com
+2. HEROKU_API_KEY = <>
+3. HEROKU_APP_NAME = ml-cicd-app
+
+>>>>>>> ba1fdb3221a67dd5595db0f7decfac52cfaca5f2
 
 BUILD DOCKER IMAGE
 ```
 docker build -t <image_name>:<tagname> .
+<<<<<<< HEAD
 ```
 > Note: Image name for docker must be lowercase
 
@@ -100,3 +114,4 @@ docker stop <container_id>
 ```
 python setup.py install
 ```pip
+======
