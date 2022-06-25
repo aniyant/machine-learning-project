@@ -96,3 +96,7 @@ docker stop <container_id>
 To install setup.py or use directly pip install -r requirements.txt but make sure to add -e . int that.
 python setup.py install
 ======
+
+Install ipykernel
+...
+pip install ipykernel
