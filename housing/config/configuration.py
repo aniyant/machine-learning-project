@@ -10,10 +10,10 @@ from housing.exception import HousingException
 class Configuration:
 
     def __init__(self,
-        config_file_path:str =CONFIG_FILE_PATH,
+        config_file_path:str = CONFIG_FILE_PATH,
         current_time_stamp:str = CURRENT_TIME_STAMP
         ) -> None:
-        
+         
         try:
             self.config_info  = read_yaml_file(file_path=config_file_path)
             self.training_pipeline_config = self.get_training_pipeline_config()
@@ -51,12 +51,12 @@ class Configuration:
             )
 
             ingested_train_dir = os.path.join(
-                data_ingestion_artifact_dir,
+                ingested_data_dir,
                 data_ingestion_info[DATA_INGESTION_TRAIN_DIR_KEY]
             )
 
             ingested_test_dir = os.path.join(
-                data_ingestion_artifact_dir,
+                ingested_data_dir,
                 data_ingestion_info[DATA_INGESTION_TEST_DIR_KEY]
             )
 
@@ -64,6 +64,7 @@ class Configuration:
                 dataset_download_url=dataset_download_url,
                 tgz_download_dir=tgz_download_dir,
                 raw_data_dir=raw_data_dir,
+                ingested_data_dir = ingested_data_dir,
                 ingested_train_dir=ingested_train_dir,
                 ingested_test_dir=ingested_test_dir
             )
@@ -74,14 +75,20 @@ class Configuration:
         except Exception as e:
             raise HousingException(e,sys) from e
 
-            
-
-        except Exception as e:
-            raise HousingException(e,sys)
 
     def get_data_validation_config(self) -> DataValidationConfig:
-        pass
+        try:
+            
+            schema_file_path = None
+            data_validation_config = DataValidationConfig(
+                schema_file_path=schema_file_path
+            )
+            return data_validation_config
+        
+        except Exception as e:
+            raise HousingException(e,sys) from e
 
+    
     def get_data_transformation_config(self) -> DataTransformationConfig:
         pass
 
