@@ -1,7 +1,6 @@
-from cv2 import trace
 import yaml
 from housing.exception import HousingException
-import os,sys
+import sys
 import numpy as np
 import dill
 import pandas as pd
