@@ -32,7 +32,11 @@ class Pipeline(Thread):
 
     def __init__(self,config: Configuration = Configuration()) -> None:
         try:
-            self.config=config
+            os.makedirs(config.training_pipeline_config.artifact_dir, exist_ok=True)
+            Pipeline.experiment_file_path = os.path.join(config.training_pipeline_config.artifact_dir,
+                                                         EXPERIMENT_DIR_NAME, EXPERIMENT_FILE_NAME)
+            super().__init__(daemon=False, name="pipeline")
+            self.config = config
 
         except Exception as e:
             raise HousingException(e,sys) from e
@@ -159,7 +163,8 @@ class Pipeline(Thread):
                                              execution_time=stop_time-Pipeline.experiment.start_time,
                                              experiment_file_path=Pipeline.experiment_file_path,
                                              is_model_accepted=model_evaluation_artifact.is_model_accepted,
-                                             accuracy=model_trainer_artifact.model_accuracy
+                                             accuracy=model_trainer_artifact.model_accuracy,
+                                             message="Pipeline has been completed."
                                              )
 
             logging.info(f"Pipeline experiment : {Pipeline.experiment}")

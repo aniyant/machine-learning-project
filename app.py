@@ -1,19 +1,15 @@
 from flask import Flask, request
-import sys
 
-import pip
 from housing.util.util import read_yaml_file, write_yaml_file
-from matplotlib.style import context
 from housing.logger import logging
-from housing.exception import HousingException
-import os, sys
+import os
 import json
 from housing.config.configuration import Configuration
 from housing.constant import CONFIG_DIR, get_current_time_stamp
 from housing.pipeline.pipeline import Pipeline
 from housing.entity.housing_predictor import HousingPredictor, HousingData
 from flask import send_file, abort, render_template
-
+from housing.logger import get_log_dataframe
 
 ROOT_DIR = os.getcwd()
 LOG_FOLDER_NAME = "logs"
@@ -24,8 +20,6 @@ LOG_DIR = os.path.join(ROOT_DIR, LOG_FOLDER_NAME)
 PIPELINE_DIR = os.path.join(ROOT_DIR, PIPELINE_FOLDER_NAME)
 MODEL_DIR = os.path.join(ROOT_DIR, SAVED_MODELS_DIR_NAME)
 
-
-from housing.logger import get_log_dataframe
 
 HOUSING_DATA_KEY = "housing_data"
 MEDIAN_HOUSING_VALUE_KEY = "median_house_value"
@@ -56,8 +50,7 @@ def render_artifact_dir(req_path):
         return send_file(abs_path)
 
     # Show directory contents
-    files = {os.path.join(abs_path, file_name): file_name for file_name in os.listdir(abs_path) if
-             "artifact" in os.path.join(abs_path, file_name)}
+    files = {os.path.join(abs_path, file_name): file_name for file_name in os.listdir(abs_path) if "artifact" in os.path.join(abs_path, file_name)}
 
     result = {
         "files": files,
@@ -87,8 +80,8 @@ def view_experiment_history():
 @app.route('/train', methods=['GET', 'POST'])
 def train():
     message = ""
-    pipeline = Pipeline(config=Configuartion(current_time_stamp=get_current_time_stamp()))
-    if not Pipeline.experiment.running_status:
+    pipeline = Pipeline(config=Configuration(current_time_stamp=get_current_time_stamp()))
+    if not pipeline.experiment.running_status:
         message = "Training started."
         pipeline.start()
     else:
@@ -180,7 +173,7 @@ def update_model_config():
         model_config = read_yaml_file(file_path=MODEL_CONFIG_FILE_PATH)
         return render_template('update_model.html', result={"model_config": model_config})
 
-    except  Exception as e:
+    except Exception as e:
         logging.exception(e)
         return str(e)
 
@@ -215,5 +208,5 @@ def render_log_dir(req_path):
 
 
 if __name__ == "__main__":
-    app.run(DEBUG=True)
+    app.run()
     
