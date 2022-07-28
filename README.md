@@ -1,10 +1,10 @@
-## California House Price Esmtimator Project
+## California House Price Estimator Project
 This is machine learning project uses california house prices dataset.
 This project is used to train models which can predict house price of california.
 
 Click below link to access the running application :
 
-### [Application Active Web Url](https://ml-cicd-app.herokuapp.com/)
+### [Application Active Web Url](https://california-house-price-predikt.herokuapp.com/)
 
 ### Software and account Requirements
 1. [Github Account](https://github.com)
