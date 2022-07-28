@@ -1,10 +1,12 @@
-# machine-learning-project
-click below link to access the running application :
+## California House Price Esmtimator Project
+This is machine learning project uses california house prices dataset.
+This project is used to train models which can predict house price of california.
+
+Click below link to access the running application :
 
 ### [Application Active Web Url](https://ml-cicd-app.herokuapp.com/)
 
-### Software and account Requirement.
-
+### Software and account Requirements
 1. [Github Account](https://github.com)
 2. [Heroku Account](https://dashboard.heroku.com/login)
 3. [VS Code IDE](https://code.visualstudio.com/download)
