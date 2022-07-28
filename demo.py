@@ -7,7 +7,7 @@ def main():
     try:
         pipeline = Pipeline()
         
-        pipeline.start()
+        pipeline.run_pipeline()
 
         #con = Configuration()
         #logging.info(con.get_data_transformation_config())

@@ -62,10 +62,8 @@ def render_artifact_dir(req_path):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    try:
-        return render_template('index.html')
-    except Exception as e:
-        return str(e)
+    return render_template('index.html')
+   
 
 
 @app.route('/view_experiment_hist', methods=['GET', 'POST'])
@@ -123,7 +121,7 @@ def predict():
                                    )
         housing_df = housing_data.get_housing_input_data_frame()
         housing_predictor = HousingPredictor(model_dir=MODEL_DIR)
-        median_housing_value = housing_predictor.predict(X=housing_df)
+        median_housing_value = housing_predictor.predict(X=housing_df)[0]
         context = {
             HOUSING_DATA_KEY: housing_data.get_housing_data_as_dict(),
             MEDIAN_HOUSING_VALUE_KEY: median_housing_value,

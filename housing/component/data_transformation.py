@@ -49,6 +49,9 @@ class FeatureGenerator(BaseEstimator, TransformerMixin):
         total_bedrooms_ix: int index number of bedrooms columns
         """
         try:
+            count =0
+            logging.info(f"running from feature generator {count}")
+            count += 1
             self.columns = columns
             if self.columns is not None:
                 total_rooms_ix = self.columns.index(COLUMN_TOTAL_ROOMS)
@@ -171,6 +174,9 @@ class DataTransformation:
             logging.info(f"Applying preprocessing object on training and testing dataframe")
             input_feature_train_arr = preprocessing_obj.fit_transform(input_feature_train_df)
             input_feature_test_arr = preprocessing_obj.fit_transform(input_feature_test_df)
+
+            #ml_train_df = pd.DataFrame(input_feature_train_arr)
+            #ml_train_df.to_csv(r"C:\Users\aniyant\Desktop\ml_train_df.csv")
 
             train_arr = np.c_[input_feature_train_arr,np.array(target_feature_train_df)]
             test_arr = np.c_[input_feature_test_arr,np.array(target_feature_test_df)]
